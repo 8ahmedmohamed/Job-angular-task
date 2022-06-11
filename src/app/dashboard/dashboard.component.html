@@ -1,0 +1,57 @@
+<nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span><i class="fa-solid fa-boxes-stacked"></i></span>
+      <a class="navbar-brand" [routerLink]="[''] " (click)="allCatogy()">OPenStore</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar-primary" style="position: fixed;">
+  <ul class="navbar-primary-menu">
+    <li>
+      <a class="disabled"><span>Products</span></a>
+      <a (click)="allCatogy()" id="all_catorgy"><span>All ( {{simpleTool + ComplexTool}} )</span></a>
+      <a (click)="sempleCatogy()" id="complex_catogry"><span>Simple
+          Tool ( {{simpleTool}} )</span></a>
+      <a (click)="ComplexCatogy()" id="simple_Catogry"> <span>Complex
+          Tool ( {{ComplexTool}} )</span></a>
+    </li>
+  </ul>
+</nav>
+
+<div class="title">
+  <h3>Products</h3>
+  <input type="button" class="btn global-sync" (click)="allCatogy()" value="Sync">
+</div>
+
+<div class="main-content" >
+  <div *ngIf="!flagforfilltersample&&!flagforfillterComplex&&!syncone">
+    <div class=" " *ngFor="let x of Products ">
+      <div class="col-xs-12 col-sm-6 col-md-3 ">
+        <app-product-list [Products]="x" (synccunction)="addItem($event)"></app-product-list>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!flagforfilltersample&&!flagforfillterall&&!syncone">
+    <div class=" " *ngFor="let x of ComplexProduce ">
+      <div class="col-xs-12 col-sm-6 col-md-3 ">
+        <app-product-list [Products]="x" (synccunction)="addItem($event)"></app-product-list>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!flagforfillterComplex&&!flagforfillterall&&!syncone">
+    <div class=" " *ngFor="let x of simpleProduct ">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <app-product-list [Products]="x" (synccunction)="addItem($event)"></app-product-list>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!flagforfillterComplex&&!flagforfillterall&&!flagforfilltersample">
+    <div class=" " *ngFor="let x of syncbtn ">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <app-product-list [Products]="x" (synccunction)="addItem($event)"></app-product-list>
+      </div>
+    </div>
+  </div>
+</div>

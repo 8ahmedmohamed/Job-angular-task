@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-body">
+        <div class="inner-sync">
+            <input type="button" class="btn sync-button " (click)="onClick(Products.id);" value="Sync" />
+        </div>
+        <img [src]="Products.imageUrl" (error)="handleMissingImage($event)" class="card-img">
+        <div class="gray-div">
+            <h4>
+                {{Products.name}}
+            </h4>
+            <p class="card-price">${{Products.price}}</p>
+            <input type="button" class="btn view-button" [routerLink]="[ '/Product/',Products.id-1] " value="View More">
+        </div>
+    </div>
+</div>
